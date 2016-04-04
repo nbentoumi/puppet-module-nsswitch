@@ -231,12 +231,13 @@ class nsswitch (
   if $nsswitch_prof_attr_real != undef {
     validate_string($nsswitch_prof_attr_real)
   }
-
+if ( $::osfamily == 'Solaris' ) {
   if $nsswitch_project == 'USE_DEFAULTS' {
     $nsswitch_project_real = $default_nsswitch_project
   } else {
     $nsswitch_project_real = $nsswitch_project
   }
+}
 
   if $nsswitch_project_real != undef {
     validate_string($nsswitch_project_real)
